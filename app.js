@@ -22,9 +22,6 @@ app.set('view engine', 'pug');
 app.use(express.static(path.join(__dirname, '/public')));
 
 
-//Setting up that there router
-//app.use('/', router);
-
 
 //                 MIDDLE WARE!!!!
 
@@ -34,8 +31,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
 //Set home route to index and tasks to api
-app.use('/', index);
-app.use('/flerbs', flerbs);
+//app.use('/', index);
+//app.use('/flerbs', flerbs);
+app.use(flerbs);
 
 
 //HARK! Are you listening???? Dev mode...

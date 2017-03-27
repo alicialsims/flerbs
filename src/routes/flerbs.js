@@ -7,6 +7,11 @@ const mongoose = require('mongoose');
 
 //          GET REQUESTS
 console.log('are we loading this at all?');
+// index page
+router.get('/', (req, res, next)=>{
+	res.render('index', {title: 'Home'});
+});
+
 // page with all the flerbs
 router.get('/flerbs', (req, res, next)=>{
 	console.log('does the get request even work?');
@@ -16,15 +21,15 @@ router.get('/flerbs', (req, res, next)=>{
  	}
  	console.log('I cant find the bug');
  	res.json({flerbs: flerbs});
- 	//return res.render('index', { title: 'Home' });
+    //res.render('index', { title: 'Home' });
  });
 });
 
 // page with a particular flerb by id SINGULAR
 router.get('/flerb/:id', (req, res, next)=>{
- Flerb.findById(flerb.id, (err, flerb)=>{
+ mongoose.model('Flerb').findById(flerb.id, (err, flerb)=>{
  	if (err) {
- 		res.send(err)
+ 		return res.send(err)
  	}
  	res.json(flerb);
  });
@@ -38,11 +43,11 @@ router.post('/flerb', (req, res, next)=>{
 	// INSERT error handler here
 
 	//else - save the post request to db
-	Flerb.save(flerb, (err, flerb)=>{
+	mongoose.model('Flerb').create(flerb, (err, flerb)=>{
 		if (err){
-			res.send(err);
+			return res.send(err);
 		}
-		res.json(flerb);
+		res.json({flerb: flerb, message: 'flerb added'});
 	});
 });
 
@@ -50,23 +55,25 @@ router.post('/flerb', (req, res, next)=>{
 
 // update or edit a flerb
 router.put('/flerb/:id', (req, res, next) => {
+	let id = req.params.id;
 	let flerb = req.body;
-	let editedFlerb = {};
 	// validation should go here !!!!!
-	// YOUR CODE HERE
+	if(flerb && flerb._id !== id){
+		return res.status(500).json({err: "IDs do not match"});
+	}
 	//else ...
-	Flerb.update(flerb.id, editedFlerb, {}, (err, flerb)=>{
+	mongoose.model('Flerb').findByIdAndUpdate(id, flerb, {new: true}, (err, flerb)=>{
 		if (err){
-			res.send(err);
+			return res.status(500).json({err: err.message});		
 		}
-		res.json(flerb);
+		res.json({'flerb': flerb, message: 'Flerb Edited'});
 	});
 });
 
 //  Delete a particular flerb
 router.delete('/flerb/:id', (req,res,next)=>{
 	console.log('debug');
-	Flerb.remove(flerb.id, (err)=>{
+	mongoose.model('Flerb').remove(flerb.id, (err)=>{
 		if (err){
 			res.send(err);
 		}

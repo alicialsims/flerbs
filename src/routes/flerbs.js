@@ -3,13 +3,15 @@ const router = express.Router();
 const db = require('../../database');
 
 //          GET REQUESTS
-
+console.log('are we loading this at all?');
 // page with all the flerbs
-router.get('/flerbs', (req, res, next)=>{
+router.get('/', (req, res, next)=>{
+	console.log('does the get request even work?');
  db.flerbs.find((err, flerbs)=>{
  	if (err) {
  		res.send(err)
  	}
+ 	console.log('I cant find the bug');
  	res.json(flerbs);
  });
 });
@@ -25,7 +27,7 @@ router.get('/flerb/:id', (req, res, next)=>{
 });
 
 //           POST REQUESTS
-router.post('/flerb', (req, res, next)=>{
+router.post('/', (req, res, next)=>{
     // get new flerb from input form
 	let flerb = req.body;
 	//if it doesn't exist throw an error????

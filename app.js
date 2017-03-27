@@ -35,7 +35,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 
 //Set home route to index and tasks to api
 app.use('/', index);
-app.use('/api', flerbs);
+app.use('/flerbs', flerbs);
 
 
 //HARK! Are you listening???? Dev mode...

@@ -17,6 +17,7 @@ app.set('view engine', 'pug');
 
 
 
+
 //Make a folder for front end stuffs
 app.use(express.static(path.join(__dirname, '/public')));
 

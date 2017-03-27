@@ -7,14 +7,16 @@ myApp.controller('AppCtrl', ['$scope', '$http', function ($scope, $http){
 // getting my data from mongo
 $http({
 	method: 'GET',
-	url: '/'
+	url: '/flerbs'
 	}).then(function successCallback(response){
 		console.log('successful mongo to angular');
 		$scope.flerbs = response;
 	}, function errorCallback(response){
 		console.log('error');
-
 });
+
+
+// 
 
 
 

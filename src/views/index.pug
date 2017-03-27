@@ -10,7 +10,7 @@ block content
 				.col-md-3 About
 				.col-md-3 Editing
 			.row.newFlerbRow
-				form(method='POST' action='/flerbs')
+				form(method='POST' action='/flerb')
 				.col-md-3.form-group 
 					input.form-control(type='text' id='name' placeholder='name' name='name')
 				.col-md-3.form-group
@@ -22,8 +22,8 @@ block content
 
 			.row(ng-repeat="flerb in flerbs")
 				.col-md-3
-					flerb.name
+					|{{flerb.name}}
 				.col-md-3
-					//img(src="flerb.picUrl")
+					//<img src="{{flerb.picUrl}}"/>
 				.col-md-3
-					flerb.about
+					|{{flerb.about}}

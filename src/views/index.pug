@@ -1,7 +1,7 @@
 extends layout
 
 block content
-	.main.container(ng-controller="AppCtrl")
+	.main.container(ng-controller='AppCtrl')
 		h1 FLERBS
 		.table.container
 			.row
@@ -11,19 +11,16 @@ block content
 				.col-md-3 Editing
 			.row.newFlerbRow
 				form(method='POST' action='/flerb')
-				.col-md-3.form-group 
-					input.form-control(type='text' id='name' placeholder='name' name='name')
-				.col-md-3.form-group
-					input.form-control(type='text' id='picUrl' placeholder='Image URL' name='picUrl')
-				.col-md-3.form-group
-					input.form-control(type='text' id='about' placeholder='All About This Flower/Herb' name='about')
-				.col-md-3.form-group
-					button.btn.btn-primary(type='submit') Add
-
-			.row(ng-repeat="flerb in flerbs")
-				.col-md-3
-					|{{flerb.name}}
-				.col-md-3
-					//<img src="{{flerb.picUrl}}"/>
-				.col-md-3
-					|{{flerb.about}}
+					.col-md-3.form-group 
+						input.form-control(ng-model='flerb.name' type='text' id='name' placeholder='name' name='name')
+					.col-md-3.form-group
+						input.form-control(ng-model='flerb.picUrl' type='text' id='picUrl' placeholder='Image URL' name='picUrl')
+					.col-md-3.form-group
+						input.form-control(ng-model='flerb.about' type='text' id='about' placeholder='All About This Flower/Herb' name='about')
+					.col-md-3.form-group
+						button.btn.btn-primary(ng-click='addFlerb()' type='submit') Add
+			.row(ng-repeat='flerb in flerbs')
+				.col-md-3 {{flerb.name}}
+				.col-md-3 {{flerb.picUrl}}
+				.col-md-3 {{flerb.about}}
+				.col-md-3 

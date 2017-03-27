@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 
 
 //          GET REQUESTS
-console.log('are we loading this at all?');
+
 // index page
 router.get('/', (req, res, next)=>{
 	res.render('index', {title: 'Home'});
@@ -14,12 +14,10 @@ router.get('/', (req, res, next)=>{
 
 // page with all the flerbs
 router.get('/flerbs', (req, res, next)=>{
-	console.log('does the get request even work?');
  	mongoose.model('Flerb').find((err, flerbs)=>{
  	if (err) {
  		res.send(err)
  	}
- 	console.log('I cant find the bug');
  	res.json({flerbs: flerbs});
     //res.render('index', { title: 'Home' });
  });
@@ -47,7 +45,7 @@ router.post('/flerb', (req, res, next)=>{
 		if (err){
 			return res.send(err);
 		}
-		res.json({flerb: flerb, message: 'flerb added'});
+		console.log('flerb added');
 	});
 });
 

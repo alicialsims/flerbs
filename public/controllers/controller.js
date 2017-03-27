@@ -4,19 +4,41 @@ const myApp = angular.module('myApp', []);
 myApp.controller('AppCtrl', ['$scope', '$http', function ($scope, $http){
 	console.log ('controller is working');
 
-// getting my data from mongo
-$http({
-	method: 'GET',
-	url: '/flerbs'
+//refresh the page after input (getting)
+const refresh = ()=> {
+	// getting my data from mongo
+	$http({
+		method: 'GET',
+		url: '/flerbs'
+		}).then(function successCallback(response){
+			console.log('successful mongo to angular');
+			$scope.flerbs = response;
+			//clear input form
+			//$scope.flerbs = '';
+		}, function errorCallback(response){
+			console.log('error receiving data from db');
+	});
+}
+
+refresh();
+
+// Post request - addFlerb() send input form data to db
+
+$scope.addFlerb = function(){
+	console.log($scope.flerb);
+	$http({
+		method: 'POST',
+		url: '/flerb',
+		data: $scope.flerb
 	}).then(function successCallback(response){
-		console.log('successful mongo to angular');
-		$scope.flerbs = response;
+		//test response
+	 console.log(response);
+	 console.log('put response working in angular');
+	 refresh();
 	}, function errorCallback(response){
-		console.log('error');
-});
-
-
-// 
+		console.log('error sending input form data to db');
+	});
+}
 
 
 

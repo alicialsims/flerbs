@@ -1,24 +1,28 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../../database');
+const mongoose = require('mongoose');
+
+
 
 //          GET REQUESTS
 console.log('are we loading this at all?');
 // page with all the flerbs
-router.get('/', (req, res, next)=>{
+router.get('/flerbs', (req, res, next)=>{
 	console.log('does the get request even work?');
- db.flerbs.find((err, flerbs)=>{
+ 	mongoose.model('Flerb').find((err, flerbs)=>{
  	if (err) {
  		res.send(err)
  	}
  	console.log('I cant find the bug');
- 	res.json(flerbs);
+ 	res.json({flerbs: flerbs});
+ 	//return res.render('index', { title: 'Home' });
  });
 });
 
 // page with a particular flerb by id SINGULAR
 router.get('/flerb/:id', (req, res, next)=>{
- db.flerbs.findById(flerb.id, (err, flerb)=>{
+ Flerb.findById(flerb.id, (err, flerb)=>{
  	if (err) {
  		res.send(err)
  	}
@@ -27,14 +31,14 @@ router.get('/flerb/:id', (req, res, next)=>{
 });
 
 //           POST REQUESTS
-router.post('/', (req, res, next)=>{
+router.post('/flerb', (req, res, next)=>{
     // get new flerb from input form
 	let flerb = req.body;
 	//if it doesn't exist throw an error????
 	// INSERT error handler here
 
 	//else - save the post request to db
-	db.flerbs.save(flerb, (err, flerb)=>{
+	Flerb.save(flerb, (err, flerb)=>{
 		if (err){
 			res.send(err);
 		}
@@ -51,7 +55,7 @@ router.put('/flerb/:id', (req, res, next) => {
 	// validation should go here !!!!!
 	// YOUR CODE HERE
 	//else ...
-	db.flerbs.update(flerb.id, editedFlerb, {}, (err, flerb)=>{
+	Flerb.update(flerb.id, editedFlerb, {}, (err, flerb)=>{
 		if (err){
 			res.send(err);
 		}
@@ -62,7 +66,7 @@ router.put('/flerb/:id', (req, res, next) => {
 //  Delete a particular flerb
 router.delete('/flerb/:id', (req,res,next)=>{
 	console.log('debug');
-	db.flerbs.remove(flerb.id, (err)=>{
+	Flerb.remove(flerb.id, (err)=>{
 		if (err){
 			res.send(err);
 		}

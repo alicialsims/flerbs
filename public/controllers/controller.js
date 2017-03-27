@@ -10,7 +10,7 @@ $http({
 	url: '/'
 	}).then(function successCallback(response){
 		console.log('successful mongo to angular');
-		$scope.flerbList = response;
+		$scope.flerbs = response;
 	}, function errorCallback(response){
 		console.log('error');
 

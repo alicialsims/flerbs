@@ -4,7 +4,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const index = require('./src/routes/index');
 const flerbs = require('./src/routes/flerbs');
-
+const db = require('./database');
 
 //initialize express app
 const app = express();

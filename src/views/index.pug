@@ -10,7 +10,6 @@ block content
 				.col-md-3 About
 				.col-md-3 Editing
 			.row.newFlerbRow
-				
 					.col-md-3.form-group 
 						input.form-control(ng-model='flerb.name' type='text' id='name' placeholder='name' name='name')
 					.col-md-3.form-group
@@ -18,9 +17,14 @@ block content
 					.col-md-3.form-group
 						input.form-control(ng-model='flerb.about' type='text' id='about' placeholder='All About This Flower/Herb' name='about')
 					.col-md-3.form-group
-						button.btn.btn-primary(ng-click='addFlerb()' type='submit') Add
+						span.buttonHolder
+							button.btn.btn-success.customButton(ng-click='addFlerb()') Add
+							button.btn.btn-primary.customButton(ng-click='updateFlerb()') Change
 			.row(ng-repeat='flerb in flerbs')
 				.col-md-3 {{flerb.name}}
 				.col-md-3 {{flerb.picUrl}}
 				.col-md-3 {{flerb.about}}
-				.col-md-3 
+				.col-md-3.editingButtons
+					span.buttonHolder 
+						button.btn.btn-info.customButton(ng-click='editFlerb(flerb)') Edit 
+						button.btn.btn-warning.customButton(ng-click='deleteFlerb(flerb)') Delete

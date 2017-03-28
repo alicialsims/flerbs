@@ -72,11 +72,13 @@ router.put('/flerb/:id', (req, res, next) => {
 //  Delete a particular flerb
 router.delete('/flerb/:id', (req,res,next)=>{
 	console.log('debug');
-	mongoose.model('Flerb').remove(flerb.id, (err)=>{
+	let id = req.params.id;
+	mongoose.model('Flerb').remove({ _id: id }, (err, flerb)=>{
 		if (err){
 			res.send(err);
 		}
-		res.json(flerb);
+		res.json({flerb: flerb});
+			console.log('flerb.id');
 	});
 });
 

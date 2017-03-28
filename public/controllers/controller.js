@@ -61,12 +61,12 @@ $scope.deleteFlerb = function(flerb){
 //get it by id first
 
 //put request next
-$scope.editFlerb = function(){
+$scope.editFlerb = function(flerb){
 	console.log('we are editing a flerb');
 	$http({
 		method: 'PUT',
-		url: '/flerb/:id',
-		data: $scope.flerb
+		url: '/flerb/' + flerb._id,
+		data: flerb
 	}).then(function successCallback(response){
 		console.log('flerb edit successful!');
 		refresh();

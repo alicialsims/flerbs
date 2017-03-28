@@ -18,7 +18,7 @@ block content
 						input.form-control(ng-model='flerb.about' type='text' id='about' placeholder='All About This Flower/Herb' name='about')
 					.col-md-3.form-group
 						span.buttonHolder
-							button.btn.btn-success.customButton(ng-click='addFlerb()') Add
+							button.btn.btn-success.customButton(ng-click='addFlerb()') span.glyphicon.glyphicon-plus
 							button.btn.btn-primary.customButton(ng-click='updateFlerb()') Change
 			.row(ng-repeat='flerb in flerbs')
 				.col-md-3 {{flerb.name}}

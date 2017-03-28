@@ -10,7 +10,9 @@ h1 {
 }
 
 .table {
-
+	border-size: 3px;
+	border-color: #f1f1f1;
+	border-style: solid;
 }
 
 .newFlerbRow{
@@ -26,5 +28,9 @@ h1 {
 }
 
 .buttonHolder{
-	
+
+}
+
+.row:nth-child(odd) {
+	background: #f1f1f1 ;
 }

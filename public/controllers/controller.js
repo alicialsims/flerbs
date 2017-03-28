@@ -11,10 +11,10 @@ const refresh = ()=> {
 		method: 'GET',
 		url: '/flerbs'
 		}).then(function successCallback(response){
-			console.log('successful mongo to angular');
-			$scope.flerbs = response;
+			console.log('successful mongo to angular', response);
+			$scope.flerbs = response.data.flerbs;
 			//clear input form
-			//$scope.flerbs = '';
+			//$scope.flerbs
 		}, function errorCallback(response){
 			console.log('error receiving data from db');
 	});
@@ -32,6 +32,8 @@ $scope.addFlerb = function(){
 		data: $scope.flerb
 	}).then(function successCallback(response){
 		//test response
+		//clear input
+		$scope.flerb = {};
 	 console.log(response);
 	 console.log('put response working in angular');
 	 refresh();

@@ -46,6 +46,7 @@ router.post('/flerb', (req, res, next)=>{
 			return res.send(err);
 		}
 		console.log('flerb added');
+		res.json({flerb: flerb});
 	});
 });
 

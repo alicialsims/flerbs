@@ -16,7 +16,7 @@ router.get('/', (req, res, next)=>{
 router.get('/flerbs', (req, res, next)=>{
  	mongoose.model('Flerb').find((err, flerbs)=>{
  	if (err) {
- 		res.send(err)
+ 		return res.send(err)
  	}
  	res.json({flerbs: flerbs});
     //res.render('index', { title: 'Home' });
@@ -25,11 +25,15 @@ router.get('/flerbs', (req, res, next)=>{
 
 // page with a particular flerb by id SINGULAR
 router.get('/flerb/:id', (req, res, next)=>{
- mongoose.model('Flerb').findById(flerb.id, (err, flerb)=>{
+	console.log('can i get by id', req.params);
+	let flerb = req.params;
+ mongoose.model('Flerb').findOne(flerb._id, (err, flerb)=>{
+
+ 	console.log('can i get by id', flerb._id);
  	if (err) {
  		return res.send(err)
  	}
- 	res.json(flerb);
+ 	res.json({flerb: flerb});
  });
 });
 

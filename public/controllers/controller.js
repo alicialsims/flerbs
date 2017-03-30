@@ -53,15 +53,28 @@ $scope.deleteFlerb = function(flerb){
 		console.log('you deleted the flerb!');
 		refresh();
 	}, function errorCallback(response){
-		console.log('flerb deletion failed');
+		console.log('flerb deletion failed', response);
 	});
 }
 
 //        -- EDIT A FLERB
-//get it by id first
+//get it by id first and move to the input form
+$scope.editFlerb = function(flerb) {
+	console.log('$scope.flerb');
+	$http({
+		method: 'GET',
+		url: '/flerb/' + flerb._id,
+		data: flerb
+	}).then(function successCallback(response){
+		console.log('editing flerb need to see', response);
+		//$scope.flerb = response.data;
+	}, function errorCallback(response){
+		console.log('editFlerb failed', response);
+	});
 
+}
 //put request next
-$scope.editFlerb = function(flerb){
+$scope.updateFlerb = function(flerb){
 	console.log('we are editing a flerb');
 	$http({
 		method: 'PUT',

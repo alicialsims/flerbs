@@ -19,10 +19,11 @@ block content
 					.col-md-3.form-group
 						span.buttonHolder
 							button.btn.btn-success.customButton(ng-click='addFlerb()') span.glyphicon.glyphicon-plus
-							button.btn.btn-primary.customButton(ng-click='updateFlerb()') Change
+							button.btn.btn-primary.customButton(ng-click='updateFlerb(flerb)') Change
 			.row(ng-repeat='flerb in flerbs')
 				.col-md-3 {{flerb.name}}
-				.col-md-3 {{flerb.picUrl}}
+				.col-md-3 
+					img.flerbPictures(src='{{flerb.picUrl}}')
 				.col-md-3 {{flerb.about}}
 				.col-md-3.editingButtons
 					span.buttonHolder 

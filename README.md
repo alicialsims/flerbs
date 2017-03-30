@@ -35,6 +35,7 @@ The current version contains all of the console logs and debugging code. Your co
 
 ## Future features
 * More information on individual flerbs and their own pages
-* Select options for easier editing
+* Select options for easier editing 
 * Organize flerbs by ... Alphabetical, etc.
+* Error page
 

@@ -1,18 +1,38 @@
+body{
+	background: #e6f2ff;
+}
 .main {
 	margin-left: auto;
 	margin-right: auto;
+	margin-top: 4%;
 	width: 70%;
-	font-size: 0.7rem;
+	font-size: 1rem;
+	font-family: 'Raleway', sans-serif;
 }
 
+.blurb {
+	display: inline;
+}
 h1 {
- text-align: center;
+	font-family: 'Merriweather Sans', sans-serif;
+	font-style: italic bold;
+ 	text-align: center;
+ 	font-size: 3rem;
+}
+
+h1 > p{
+	font-family: 'Merriweather Sans', sans-serif;
+	font-style: italic;
+	font-size: 1rem;
+	text-align: right;
 }
 
 .table {
+	background: #fff;
 	border-size: 3px;
-	border-color: #f1f1f1;
+	border-color: #99ccff;
 	border-style: solid;
+	border-width: 2px;
 }
 
 .newFlerbRow{
@@ -20,21 +40,31 @@ h1 {
 }
 
 .editingButtons {
-
+	display: inline-block;
 }
 
 .customButton {
-	width: 90px;
+	width: 70px;
+	padding: 20px;
+	margin: 3px;
 }
 
 .buttonHolder{
 
 }
-
+.row {
+	vertical-align: middle;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
 .row:nth-child(odd) {
 	background: #f1f1f1 ;
-}
 
+}
+.flerbName{
+	font-weight: bold;
+}
 .flerbPictures {
-	
+	width: 150px;
+	height: 110px;
 }

@@ -1,19 +1,17 @@
 {
   "name": "flerbs",
   "version": "1.0.0",
-  "description": "",
+  "description": "A database of flowers and herbs for the Code Louisville Full Stack JavaScript 2017 cohort",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "Alicia Sims",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.17.1",
-    "ejs": "^2.5.6",
     "express": "^4.15.2",
-    "mongojs": "^2.4.0",
     "mongoose": "^4.9.2",
     "pug": "^2.0.0-beta11"
   }

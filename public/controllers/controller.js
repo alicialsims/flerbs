@@ -67,7 +67,7 @@ $scope.editFlerb = function(flerb) {
 		data: flerb
 	}).then(function successCallback(response){
 		console.log('editing flerb need to see', response);
-		$scope.flerb = response.data.flerb;
+		$scope.flerb = flerb;
 	}, function errorCallback(response){
 		console.log('editFlerb failed', response);
 	});

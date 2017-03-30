@@ -24,7 +24,7 @@ h1 > p{
 	font-family: 'Merriweather Sans', sans-serif;
 	font-style: italic;
 	font-size: 1rem;
-	text-align: right;
+	text-align: center;
 }
 
 .table {
@@ -36,7 +36,7 @@ h1 > p{
 }
 
 .newFlerbRow{
-	
+	margin-top: 10px;
 }
 
 .editingButtons {
@@ -57,7 +57,7 @@ h1 > p{
 	padding-top: 5px;
 	padding-bottom: 5px;
 }
-.row:nth-child(odd) {
+.row:nth-child(even) {
 	background: #f1f1f1 ;
 
 }

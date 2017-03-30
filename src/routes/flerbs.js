@@ -19,7 +19,6 @@ router.get('/flerbs', (req, res, next)=>{
  		return res.send(err)
  	}
  	res.json({flerbs: flerbs});
-    //res.render('index', { title: 'Home' });
  });
 });
 
@@ -29,7 +28,7 @@ router.get('/flerb/:id', (req, res, next)=>{
 	let flerb = req.params;
  mongoose.model('Flerb').findOne(flerb._id, (err, flerb)=>{
 
- 	console.log('can i get by id', flerb._id);
+ 	//console.log('can i get by id', flerb._id);
  	if (err) {
  		return res.send(err)
  	}
@@ -41,10 +40,6 @@ router.get('/flerb/:id', (req, res, next)=>{
 router.post('/flerb', (req, res, next)=>{
     // get new flerb from input form
 	let flerb = req.body;
-	//if it doesn't exist throw an error????
-	// INSERT error handler here
-
-	//else - save the post request to db
 	mongoose.model('Flerb').create(flerb, (err, flerb)=>{
 		if (err){
 			return res.send(err);
@@ -75,14 +70,14 @@ router.put('/flerb/:id', (req, res, next) => {
 
 //  Delete a particular flerb
 router.delete('/flerb/:id', (req,res,next)=>{
-	console.log('debug');
+	//console.log('debug');
 	let id = req.params.id;
 	mongoose.model('Flerb').remove({ _id: id }, (err, flerb)=>{
 		if (err){
 			res.send(err);
 		}
 		res.json({flerb: flerb});
-			console.log('flerb.id');
+			//console.log('flerb.id');
 	});
 });
 

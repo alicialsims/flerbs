@@ -6,13 +6,13 @@ const index = require('./src/routes/index');
 const flerbs = require('./src/routes/flerbs');
 const db = require('./database');
 
-//you forgot your models
+//models from mongoose
 require('./src/models/Flerb.js');
 
 //initialize express app
 const app = express();
 
-//View Engine  for EJS and can use html ((switch to pug later))
+//View Engine  for PUG
 app.set('views', path.join(__dirname, '/src/views'));
 app.set('view engine', 'pug');
 
@@ -29,9 +29,7 @@ app.use(express.static(path.join(__dirname, '/public')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-//Set home route to index and tasks to api
-//app.use('/', index);
-//app.use('/flerbs', flerbs);
+//Set home route 
 app.use(flerbs);
 
 
@@ -46,8 +44,8 @@ app.listen(8080, ()=> {
 app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.send(err);
-  //res.render('error', {
-  //  message: err.message,
-  //  error: {}
-  //});
+  res.render('error', {
+   message: err.message,
+   error: {}
+  });
 });

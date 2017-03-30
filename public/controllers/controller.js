@@ -59,21 +59,21 @@ $scope.deleteFlerb = function(flerb){
 
 //        -- EDIT A FLERB
 //get it by id first and move to the input form
-$scope.editFlerb = function(flerb) {
-	console.log('$scope.flerb');
+$scope.editFlerb = function(flerb) { 
+	console.log(flerb);
 	$http({
 		method: 'GET',
 		url: '/flerb/' + flerb._id,
 		data: flerb
 	}).then(function successCallback(response){
 		console.log('editing flerb need to see', response);
-		//$scope.flerb = response.data;
+		$scope.flerb = response.data.flerb;
 	}, function errorCallback(response){
 		console.log('editFlerb failed', response);
 	});
 
 }
-//put request next
+//put request next, update in form and save
 $scope.updateFlerb = function(flerb){
 	console.log('we are editing a flerb');
 	$http({
@@ -82,6 +82,7 @@ $scope.updateFlerb = function(flerb){
 		data: flerb
 	}).then(function successCallback(response){
 		console.log('flerb edit successful!');
+		$scope.flerb = {};
 		refresh();
 	}, function errorCallback(response){
 		console.log('flerb edit failed');
